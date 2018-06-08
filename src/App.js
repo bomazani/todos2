@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import todosList from './todos.json';
 import TodoLists from './todoLists/TodoLists';
-// import TodoItem from './todoLists/TodoItem';
 import './index.css';
 
 
@@ -14,8 +13,6 @@ class App extends Component {
     }
   }
 
-  // this is supposed to update the 'completed' from true to false, or vise versa.
-  // because I copied 'handleSubmit'
   todoToggleClick = (id) => (event) => {
     this.setState({
       todos: this.state.todos.map(
@@ -43,9 +40,7 @@ class App extends Component {
   }
 
   handleSubmit = (event) => {
-
     event.preventDefault();
-
     this.setState({
       todos: [...this.state.todos, 
         {
