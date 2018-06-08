@@ -49,11 +49,13 @@ class App extends Component {
     this.setState({
       todos: [...this.state.todos, 
         {
-        title: this.state.input
-        }
+        title: this.state.input,
+        id: this.state.todos[this.state.todos.length-1].id+1,
+        completed: false
+        },
       ],
       input: ""
-    })
+    });
     console.log(this.state.todos);
   }
 
