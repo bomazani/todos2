@@ -35,6 +35,15 @@ class App extends Component {
     })
   }
 
+  // delete all items marked as completed.
+  // completedDestroy (event) => {
+  //   this.setState({
+  //     todos: this.state.todos filter(
+  //       todo => todo.completed !== true
+  //     )
+  //   })
+  // }
+
   handleChange = (event) => {
     this.setState({ input: event.target.value });
   }
@@ -71,9 +80,14 @@ class App extends Component {
 
         <footer className="footer">
 
-          <span className="todo-count"><strong>0</strong> item(s) left</span>
+          <span className="todo-count"><strong>{this.state.todos.length}</strong> item(s) total</span>
+          <span className="space"><strong>  </strong></span>
+          <span className="total-count"><strong>{this.state.todos.length}</strong> item(s) left</span>
 
-          <button className="clear-completed">Clear completed</button>
+
+          <button className="clear-completed" completedDestroy={this.completedDestroy}>
+            Clear completed
+          </button>
         </footer>
       </section>
 
