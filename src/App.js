@@ -13,6 +13,7 @@ class App extends Component {
     }
   }
 
+
   todoToggleClick = (id) => (event) => {
     this.setState({
       todos: this.state.todos.map(
@@ -24,8 +25,8 @@ class App extends Component {
         }
       )
     })
-
   }
+
 
   todoDestroy = (id) => (event) => {
     this.setState({
@@ -33,20 +34,26 @@ class App extends Component {
         todo => todo.id !== id 
       )
     })
+    console.log("todoDestroy button was clicked")
+    console.log(this.state.todos)
+  }
+  
+  
+  clearCompleted = (onClick) => {
+    this.setState({
+      todos: this.state.todos.filter(
+        todo => todo.completed !== true 
+      )
+    })
+    console.log("clearCompleted button was clicked")
+    console.log(this.state.todos)
   }
 
-  // delete all items marked as completed.
-  // completedDestroy (event) => {
-  //   this.setState({
-  //     todos: this.state.todos filter(
-  //       todo => todo.completed !== true
-  //     )
-  //   })
-  // }
 
   handleChange = (event) => {
     this.setState({ input: event.target.value });
   }
+
 
   handleSubmit = (event) => {
     event.preventDefault();
@@ -62,6 +69,7 @@ class App extends Component {
     });
     console.log(this.state.todos);
   }
+
 
   render() {
     return (
@@ -81,11 +89,11 @@ class App extends Component {
         <footer className="footer">
 
           <span className="todo-count"><strong>{this.state.todos.length}</strong> item(s) total</span>
-          <span className="space"><strong>  </strong></span>
+          <span className="space"><strong> </strong></span>
           <span className="total-count"><strong>{this.state.todos.length}</strong> item(s) left</span>
 
 
-          <button className="clear-completed" completedDestroy={this.completedDestroy}>
+          <button className="clear-completed" onClick={this.clearCompleted} >
             Clear completed
           </button>
         </footer>
